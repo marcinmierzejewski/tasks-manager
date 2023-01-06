@@ -27,8 +27,9 @@ const tasksSlice = createSlice({
       },
     },
     deleteTask(state, action) {
-      const index = state.findIndex(task => task.id === action.payload);
-      state.splice(index, 1);
+      // const index = state.findIndex(task => task.id === action.payload);
+      // state.splice(index, 1);
+      return (state = state.filter(task => task.id !== action.payload))
     },
     toggleCompleted(state, action) {
       for (const task of state) {

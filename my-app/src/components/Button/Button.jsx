@@ -10,7 +10,7 @@ export const Button = ({
   return (
     <button
       className={clsx(css.btn, {
-        [css.isSelected]: selected
+        [css.isSelected]: selected,
       })}
       type={type}
       {...otherProps}

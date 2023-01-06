@@ -1,17 +1,19 @@
 import { StatusFilter } from "../StatusFilter/StatusFilter";
 import { TaskCounter } from "../TaskCounter/TaskCounter";
+import { Section } from "../Section/Section.styled";
+import { Title } from "./AppBar.styled";
 
 export const AppBar = () => {
   return (
     <header>
-      <section>
-        <h2>Tasks</h2>
+      <Section>
+        <Title>Tasks</Title>
         <TaskCounter />
-      </section>
-      <section>
-        <h2>Filter by status</h2>
+      </Section>
+      <Section>
+        <Title>Filter by status</Title>
         <StatusFilter />
-      </section>
+      </Section>
     </header>
   );
 };
