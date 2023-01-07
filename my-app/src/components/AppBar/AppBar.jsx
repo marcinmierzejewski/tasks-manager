@@ -1,11 +1,11 @@
 import { StatusFilter } from "../StatusFilter/StatusFilter";
 import { TaskCounter } from "../TaskCounter/TaskCounter";
 import { Section } from "../Section/Section.styled";
-import { Title } from "./AppBar.styled";
+import { Title, Header } from "./AppBar.styled";
 
 export const AppBar = () => {
   return (
-    <header>
+    <Header>
       <Section>
         <Title>Tasks</Title>
         <TaskCounter />
@@ -14,6 +14,6 @@ export const AppBar = () => {
         <Title>Filter by status</Title>
         <StatusFilter />
       </Section>
-    </header>
+    </Header>
   );
 };

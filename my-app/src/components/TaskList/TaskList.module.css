@@ -4,6 +4,6 @@
   list-style: none;
 }
 
-.listItem + .listItem {
+.listItem + .listItem {  
   border-top: 1px solid #2f2f37;
 }

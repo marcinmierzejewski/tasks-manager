@@ -23,6 +23,7 @@
   background-color: transparent;
   cursor: pointer;
   color: #f44336;
+  transition: all 250ms;
 }
 
 .btn:hover {

@@ -1,12 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { loadFromLocalStorage } from "../services/localStorageServices";
 
-const tasksInitialState = [
-  { id: 0, text: "Learn HTML and CSS", completed: true, isEdit: false },
-  { id: 1, text: "Get good at JavaScript", completed: true, isEdit: false },
-  { id: 2, text: "Master React", completed: false, isEdit: false },
-  { id: 3, text: "Discover Redux", completed: false, isEdit: false },
-  { id: 4, text: "Build amazing apps", completed: false, isEdit: false },
-];
+const tasksInitialState = loadFromLocalStorage('tasks') || [];
 
 const tasksSlice = createSlice({
   name: "tasks",
