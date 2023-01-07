@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Button } from "../Button/Button";
-import { editTask } from "../../redux/tasksSlice";
+import { MdOutlineEditNote } from "react-icons/md";
+import { editTask, closeEdited } from "../../redux/tasksSlice";
 import css from "./EditTask.module.css";
 
 export const EditTask = ({currentText, taskId }) => {
@@ -11,6 +12,7 @@ export const EditTask = ({currentText, taskId }) => {
     event.preventDefault();
     const form = event.target;
     dispatch(editTask([taskId, form.elements.text.value]));
+    dispatch(closeEdited());
     form.reset();
   };
 
@@ -26,7 +28,9 @@ export const EditTask = ({currentText, taskId }) => {
         value={taskText}
         onChange={(e)=>setTaskText(e.target.value)}
       />
-      <Button type="submit">Edit</Button>
+      <Button type="submit">
+        <MdOutlineEditNote size={24} />
+      </Button>
     </form>
   );
 };

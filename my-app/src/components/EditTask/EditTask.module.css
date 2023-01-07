@@ -6,9 +6,13 @@
 .field {
   flex-grow: 1;
   padding: 8px;
+  padding: 0;
   font: inherit;
+  text-align: center;
+  color: rgb(126, 126, 126);
 }
 
 .field:focus {
   outline-color: #1976d2;
+  color: black;
 }

@@ -1,39 +1,48 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { MdClose } from "react-icons/md";
-import { deleteTask, toggleCompleted } from "../../redux/tasksSlice";
+import { MdClose, MdOutlineBackspace } from "react-icons/md";
+import {
+  deleteTask,
+  toggleCompleted,
+  openEdited,
+  closeEdited,
+} from "../../redux/tasksSlice";
 import css from "./Task.module.css";
 import { EditTask } from "../EditTask/EditTask";
 
 export const Task = ({ task }) => {
   const dispatch = useDispatch();
-  const [isEdit, setIsEdit] = useState(false);
-
   const handleDelete = () => dispatch(deleteTask(task.id));
-
   const handleToggle = () => dispatch(toggleCompleted(task.id));
-
-  const editOpen = () => setIsEdit(true);
-  const editClose = () => setIsEdit(false);
+  const editOpen = () => dispatch(openEdited(task.id));
+  const editClose = () => dispatch(closeEdited());
 
   return (
     <div className={css.wrapper}>
-      <input
-        type="checkbox"
-        className={css.checkbox}
-        checked={task.completed}
-        onChange={handleToggle}
-      />
-      <div onClick={editOpen} className={css.text}>
-        {isEdit ? <EditTask currentText={task.text} taskId={task.id}/> : task.text}
-      </div>
+      {task.isEdit ? (
+        <button className={css.btn} onClick={editClose}>
+          <MdOutlineBackspace size={24} />
+        </button>
+      ) : (
+        <input
+          type="checkbox"
+          className={css.checkbox}
+          checked={task.completed}
+          onChange={handleToggle}
+        />
+      )}
 
-      {isEdit ? <button onClick={editClose}>Back</button> :
+      <div onClick={editOpen} className={css.text}>
+        {task.isEdit ? (
+          <EditTask currentText={task.text} taskId={task.id} />
+        ) : (
+          task.text
+        )}
+      </div>
+      {!task.isEdit && (
         <button className={css.btn} onClick={handleDelete}>
-        <MdClose size={24} />
-      </button>
-      }
-      
+          <MdClose size={24} />
+        </button>
+      )}
     </div>
   );
 };
